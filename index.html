@@ -1,175 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>CatPhotoApp</title>
-    <link rel="stylesheet" href="./styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTracker - Your IT Journey</title>
   </head>
   <body>
-    <nav>
-      <p>
-      <a href="#photos">Photos</a>  |
-      <a href="#lists">Lists</a>  |
-      <a href="#form">Form</a>  |
-      <a href="#facts">Facts</a>  |
-      <a href="#quote">Quote</a>  |
-      </p>
-    </nav>
-    <main>
-      <h1>CatPhotoApp</h1>
-      <section id="photos">
-        <h2>Cat Photos</h2>
-        <p>
-          Everyone loves
-          <a
-            href="https://cdn.freecodecamp.org/curriculum/cat-photo-app/running-cats.jpg"
-            >cute cats</a
-          >
-          online!
-        </p>
-        <p>
-          See more
-          <a target="_blank" href="https://freecatphotoapp.com">cat photos</a>
-          in our gallery.
-        </p>
-        <a href="https://freecatphotoapp.com"
-          ><img
-            src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg"
-            alt="A cute orange cat lying on its back."
-        /></a>
+    <header>
+      <h1>DevTracker</h1>
+      <nav>
+        <a href="#/dashboard">Home</a>
+        <a href="#/topics">Topics</a>
+        <a href="#/goals">Goals</a>
+        <a href="#/profile">Profile</a>
+      </nav>
+    </header>
+
+    <main id="app">
+      <section id="dashboard" class="page">
+        <h2>Welcome, Developer!</h2>
+
+        <div id="avatar-container">
+          <img id="cat-avatar" src="" alt="DevCat">
+          <p>Level 1 - Beginner</p>
+        </div>
+
+        <div class="progress-stats">
+          <div>Topics Completed: <span id="topics-completed">0</span></div>
+          <div>XP: <span id="xp-count">0</span></div>
+          <div>Current Level: <span id="level-count">1</span></div>
+        </div>
+
+        <div id="daily-quest">
+          <h3>Today's Quest</h3>
+          <p id="quest-text">Complete 2 tasks</p>
+          <p id="quest-status">Status: Incomplete</p>
+        </div>
       </section>
 
-      <hr>
+      <section id="topics" class="page">
+        <h2>Topics to Learn</h2>
+        <div id="topics-list">
+          <div class="topic-card">
+            <h3>JavaScript Basics</h3>
+            <p>Status: In Progress</p>
+            <progress value="50" max="100"></progress>
+            <button onclick="goToTopic('js-basics')">Learn</button>
+          </div>
 
-      <section id="lists">
-        <h2>Cat Lists</h2>
-        <h3>Things cats love:</h3>
-        <ul>
-          <li>catnip</li>
-          <li>laser pointers</li>
-          <li>lasagna</li>
+          <div class="topic-card">
+            <h3>HTML5 and CSS3</h3>
+            <p>Status: Completed</p>
+            <progress value="100" max="100"></progress>
+            <button onclick="goToTopic('html-css')">View</button>
+        </div>
+       </div>
+      </section>
+
+      <section id="topic-detail" class="page">
+        <h2>JavaScript Basics</h2>
+        <ul class="task-list">
+          <li><input type="checkbox"> Variables and Data Types</li>
+          <li><input type="checkbox"> Conditions and Loops</li>
+          <li><input type="checkbox"> Functions</li>
         </ul>
-        <figure>
-          <img
-            src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/lasagna.jpg"
-            alt="A slice of lasagna on a plate."
-          />
-          <figcaption>Cats <em>love</em> lasagna.</figcaption>
-        </figure>
-        <h3>Top 3 things cats hate:</h3>
-        <ol>
-          <li>flea treatment</li>
-          <li>thunder</li>
-          <li>other cats</li>
-        </ol>
-        <figure>
-          <img
-            src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/cats.jpg"
-            alt="Five cats looking around a field."
-          />
-          <figcaption>Cats <strong>hate</strong> other cats.</figcaption>
-        </figure>
+        
+        <button onclick="markTopicComplete()">Complete Topic</button>
       </section>
 
-      <hr>
-
-      <section id="form">
-        <h2>Cat Form</h2>
-        <form action="https://freecatphotoapp.com/submit-cat-photo">
-          <fieldset>
-            <legend>Is your cat an indoor or outdoor cat?</legend>
-            <label
-              ><input
-                id="indoor"
-                type="radio"
-                name="indoor-outdoor"
-                value="indoor"
-                checked
-              />
-              Indoor</label
-            >
-            <label
-              ><input
-                id="outdoor"
-                type="radio"
-                name="indoor-outdoor"
-                value="outdoor"
-              />
-              Outdoor</label
-            >
-          </fieldset>
-          <fieldset>
-            <legend>What's your cat's personality?</legend>
-            <input
-              id="loving"
-              type="checkbox"
-              name="personality"
-              value="loving"
-              checked
-            />
-            <label for="loving">Loving</label>
-            <input id="lazy" type="checkbox" name="personality" value="lazy" />
-            <label for="lazy">Lazy</label>
-            <input
-              id="energetic"
-              type="checkbox"
-              name="personality"
-              value="energetic"
-            />
-            <label for="energetic">Energetic</label>
-          </fieldset>
-          <input
-            type="text"
-            name="catphotourl"
-            placeholder="cat photo URL"
-            required
-          />
-          <button type="submit">Submit</button>
+      <section id="goals" class="page">
+        <h2>My Goals</h2>
+        <form id="goal-form">
+          <input type="text" id="goal-input" placeholder="e.g., Learn React">
+          <button type="submit">Add Goal</button>
         </form>
+
+        <ul id="goal-list">
+          <li>Complete HTML Course</li>
+          <li>Learn JavaScript Basics</li>
+        </ul>
       </section>
 
-      <hr>
+      <section id="profile" class="page">
+        <h2>Your Profile</h2>
 
-      <section id="facts">
-        <h2>Fun Cat Facts</h2>
-        <table border="1">
-          <tr>
-            <th>Fact</th>
-            <th>Details</th>
-          </tr>
-          <tr>
-            <td>Average Lifespan</td>
-            <td>13-17 years</td>
-          </tr>
-          <tr>
-            <td>Top Speed</td>
-            <td>52 km/h</td>
-          </tr>
-          <tr>
-            <td>Hours of Sleep</td>
-            <td>12-16 per day</td>
-          </tr>
-        </table>
-      </section>
+        <div class="profile-info">
+          <p>Name: <strong>DevKitty</strong></p>
+          <p>Level: <span id="profile-level">1</span></p>
+          <p>XP Earned: <span id="profile-xp">0</span></p>
+        </div>
 
-      <hr>
-
-      <section id="quote">
-        <h2>Wisdom of the cats</h2>
-        <blockquote>
-          "Time spent with cats is never wasted" - Sigmnund Freud
-        </blockquote>
-        <details>
-          <summary>Click to reveal a cat tip</summary>
-          <p>Cats love high spots. Give them  access to shelves or window sills</p>
-        </details>
+        <div class="badges">
+          <h3>Badges</h3>
+          <div class="badge-grid">
+            <div class="badge">
+              <img src="" alt="JS Master">
+              <p>JS Master</p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
-  
+
     <footer>
-      <p>
-        No Copyright -
-        <a href="https://www.freecodecamp.org">freeCodeCamp.org</a>
-      </p>
+      <p>2025 DevTracker - All Rights Reserved</p>
     </footer>
   </body>
 </html>
+  
+ 
